@@ -1,0 +1,477 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+    position:relative;
+    color:white;
+    background:
+    radial-gradient(circle at top left,#7c3aed22,transparent 30%),
+    radial-gradient(circle at bottom right,#ec489922,transparent 35%),
+    linear-gradient(
+        135deg,
+        #05010b,
+        #10051d,
+        #1d1035,
+        #09090b
+    );
+
+}
+
+/* =======================
+      AURORA
+======================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:900px;
+    height:900px;
+    left:-250px;
+    top:-250px;
+    border-radius:50%;
+    background: radial-gradient(circle,#8b5cf6 0%,transparent 70%);
+    filter:blur(180px);
+    opacity:.35;
+    animation:blob1 18s ease-in-out infinite alternate;
+    z-index:-3;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:600px;
+    height:600px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    background:url("img.png") center/contain no-repeat;
+    animation:rotateLogo 60s linear infinite;
+    pointer-events:none;
+    z-index:-1;
+}
+
+@keyframes rotateLogo{
+    from{
+        transform:
+        translate(-50%,-50%)
+        rotate(0deg);
+    }
+
+    to{
+        transform:
+        translate(-50%,-50%)
+        rotate(360deg);
+    }
+
+}
+
+
+/* =======================
+     CONTENEDOR
+======================= */
+
+.container{
+    width:760px;
+    max-width:95%;
+    position:relative;
+    z-index:5;
+    overflow:hidden;
+    border-radius:28px;
+    padding:38px;
+    background: rgba(255,255,255,.08);
+    backdrop-filter:blur(28px);
+    -webkit-backdrop-filter:blur(28px);
+    border: 1px solid rgba(255,255,255,.15);
+    box-shadow: 0 20px 70px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -1px 0 rgba(255,255,255,.05);
+
+}
+
+/* REFLEJO */
+
+.container::before{
+    content:"";
+    position:absolute;
+    width:280px;
+    height:900px;
+    background: linear-gradient(transparent, rgba(255,255,255,.22), transparent);
+    transform:rotate(28deg);
+    left:-420px;
+    top:-250px;
+    animation:shine 10s linear infinite;
+}
+
+@keyframes shine{
+    100%
+        left:140%;
+    }
+}
+
+/* =======================
+      TITULOS
+======================= */
+
+h1{
+
+    text-align:center;
+    font-size:42px;
+    font-weight:800;
+    margin-bottom:10px;
+    letter-spacing:1px;
+    background: linear-gradient(90deg, #ffffff, #d946ef, #8b5cf6, #ffffff);
+    background-size:300%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:title 8s linear infinite;
+}
+
+@keyframes title{
+    to{
+        background-position:300%;
+    }
+}
+
+p{
+    text-align:center;
+    color:#d1d5db;
+    margin-bottom:28px;
+    font-size:16px;
+}
+
+/* =======================
+     CALCULADORA
+======================= */
+
+.calculator{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+input{
+    width:100%;
+    padding:18px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    color:white;
+    font-size:22px;
+    outline:none;
+    transition:.35s;
+}
+
+input::placeholder{
+    color:#d4d4d8;
+}
+
+input:focus{
+    border-color:#a855f7;
+    box-shadow: 0 0 15px rgba(168,85,247,.5), 0 0 35px rgba(236,72,153,.35);
+    transform:scale(1.01);
+}
+
+/* =======================
+      BOTONES
+======================= */
+
+.buttons{
+    display:flex;
+    gap:14px;
+}
+
+button{
+    flex:1;
+    padding:15px;
+    border:none;
+    border-radius:16px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    color:white;
+    background:
+    linear-gradient(135deg, rgba(124,58,237,.95), rgba(236,72,153,.95));
+    box-shadow: 0 12px 25px rgba(124,58,237,.25);
+    transition:.35s;
+
+}
+
+button:hover{
+    transform:
+    translateY(-4px)
+    scale(1.02);
+    box-shadow: 0 0 25px rgba(168,85,247,.7), 0 0 45px rgba(236,72,153,.4);
+
+}
+
+button:active{
+    transform:scale(.97);
+
+}
+
+.danger{
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+
+}
+
+.danger:hover{
+    box-shadow: 0 0 25px rgba(239,68,68,.6);
+
+}
+
+
+#result{
+    width:100%;
+    min-height:65px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:18px;
+    margin-top:5px;
+    border-radius:16px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(25px);
+    font-size:24px;
+    font-weight:700;
+    color:white;
+    text-shadow: 0 0 12px rgba(236,72,153,.6);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 8px 30px rgba(0,0,0,.25);
+
+}
+
+/* =======================
+      HISTORIAL
+======================= */
+
+.history{
+    margin-top:35px;
+}
+
+.history h2{
+    margin-bottom:18px;
+    font-size:24px;
+    font-weight:700;
+    color:white;
+}
+
+#historyList{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    max-height:320px;
+    overflow-y:auto;
+    padding-right:6px;
+}
+
+/* TARJETA DEL HISTORIAL */
+
+#historyList li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:18px;
+    padding:16px 18px;
+    border-radius:18px;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.10);
+    transition:.35s;
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.18);
+}
+
+#historyList li:hover{
+    transform:
+    translateY(-3px);
+    background:rgba(255,255,255,.10);
+    box-shadow: 0 12px 35px rgba(139,92,246,.30);
+
+}
+
+/* =======================
+      TEXTO
+======================= */
+
+.expression{
+    flex:1;
+    font-size:17px;
+    color:#f8fafc;
+    word-break:break-word;
+}
+
+.expression b{
+    color:#f472b6;
+}
+
+/* =======================
+      BOTONES
+======================= */
+
+.actions{
+    display:flex;
+    gap:10px;
+}
+
+.actions button{
+    width:95px;
+    padding:10px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    color:white;
+    font-size:14px;
+    font-weight:600;
+}
+
+/* EDITAR */
+
+.edit{
+    background: linear-gradient( 135deg, #7c3aed, #a855f7);
+
+}
+
+.edit:hover{
+    transform:translateY(-2px);
+    box-shadow: 0 0 20px rgba(168,85,247,.8);
+
+}
+
+/* ELIMINAR */
+
+.delete{
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.delete:hover{
+    transform:translateY(-2px);
+    box-shadow: 0 0 20px rgba(239,68,68,.8);
+
+}
+
+/* =======================
+      SIN HISTORIAL
+======================= */
+
+.empty{
+    text-align:center;
+    padding:30px;
+    border-radius:18px;
+    background:rgba(255,255,255,.05);
+    color:#d1d5db;
+    font-style:italic;
+}
+
+/* =======================
+      SCROLL
+======================= */
+
+::-webkit-scrollbar{
+    width:9px;
+
+}
+::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius:20px;
+    background: linear-gradient(#7c3aed, #ec4899);
+
+}
+
+/* =======================
+      ANIMACIONES
+======================= */
+
+.container{
+    animation:aparecer 3s ease,
+    flotar 8s ease-in-out infinite;
+
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:
+        translateY(40px)
+        scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:
+        translateY(0)
+        scale(1);
+    }
+
+}
+
+@keyframes flotar{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+/* =======================
+      RESPONSIVE
+======================= */
+
+@media(max-width:768px){
+    .container{
+        padding:25px;
+    }
+    h1{
+        font-size:32px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+    #historyList li{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+    .actions{
+        width:100%;
+    }
+    .actions button{
+        flex:1;
+        width:auto;
+    }
+    input{
+        font-size:18px;
+    }
+    #result{
+        font-size:20px;
+    }
+}
+
+/* =======================
+   EFECTO DE BRILLO
+======================= */
+
+.container:hover{
+    box-shadow: 0 30px 80px rgba(139,92,246,.30), 0 10px 40px rgba(236,72,153,.20), inset 0 1px 0 rgba(255,255,255,.25);
+
+}
