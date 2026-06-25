@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EvalExpr</title>
+
+<link rel="icon" type="image/png" href="img.png">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>EvalExpr</h1>
+
+    <p>Evaluador de Expresiones Matemáticas</p>
+
+    <div class="calculator">
+
+        <input
+            type="text"
+            id="expression"
+            placeholder="Ingresa tu expresión matematica"
+            autocomplete="off"
+        >
+
+        <div class="buttons">
+
+            <button onclick="evaluateExpression()">
+                Evaluar
+            </button>
+
+            <button onclick="exportHistory()">
+                Exportar TXT
+            </button>
+
+            <button class="danger" onclick="clearHistory()">
+                Vaciar Historial
+            </button>
+
+        </div>
+
+        <div id="result">
+            Resultado:
+        </div>
+
+    </div>
+
+    <div class="history">
+
+        <h2>📜 Historial</h2>
+
+        <ul id="historyList">
+
+            <!-- Se llena automáticamente desde JavaScript -->
+
+        </ul>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
